@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,27 +6,37 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './github-profile.component.html',
   styleUrls: ['./github-profile.component.css']
 })
-export class GithubProfileComponent implements OnInit {
+//export class GithubProfileComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  //constructor(private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    console.log("Github profile on init");
+  // ngOnInit() {
+  //   console.log("Github profile on init");
   
-    //   this.route.paramMap
-  //     .subscribe(params => {
-  //         //console.log(params);
-  //         let id = +params.get('id');
-  //         console.log(id);
-  //     });
+  //   //   this.route.paramMap
+  //   //     .subscribe(params => {
+  //   //         //console.log(params);
+  //   //         let id = +params.get('id');
+  //   //         console.log(id);
+  //   //     });
 
-    // this.route.paramMap
-    // .subscribe(params => {
-    //     console.log(params.get('id'));
-    // });
+  //   // this.route.paramMap
+  //   // .subscribe(params => {
+  //   //     console.log(params.get('id'));
+  //   // });
 
-    let id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
-  }  
+  //   let id = this.route.snapshot.paramMap.get('id');
+  //   console.log(id);
+  // }  
+
+  export class GithubProfileComponent {
+
+    constructor(private router: Router) { }
+
+    submit() {
+      this.router.navigate(['/followers'], {
+        queryParams: {page: 1, order: 'newest'}
+      });
+    }
 
 }
